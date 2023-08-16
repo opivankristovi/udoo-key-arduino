@@ -21,7 +21,7 @@
 |---|---|---|
 |Gpio23|Reset pin|Reset rp2040 by setting low then setting high|
 
-## I2S pins for microphone
+## I2S pins for SPK0838HT4H-1 digital microphone
 |ESP32|Microphone sensor|Function|
 |---|---|---|
 |Gpio25|I2S DO|I2S data pin|
