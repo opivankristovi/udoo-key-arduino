@@ -21,6 +21,11 @@
 |---|---|---|
 |Gpio23|Reset pin|Reset rp2040 by setting low then setting high|
 
+## I2S pins for microphone
+|ESP32|Microphone sensor|Function|
+|---|---|---|
+|Gpio25|I2S DO|I2S data pin|
+|Gpio27|I2S CLK|I2S clock pin|
 
 ## On-board LED Pins
 
