@@ -6,4 +6,10 @@ Examples in this folder are for writing to the RP2040 controller.
 [Serial UART connection with ESP32](https://github.com/opivankristovi/udoo-key-arduino/tree/main/rp2040/picoToEsp32UART)
   Example of how to read/write serial UART commands to/from ESP32
 
+[Readout of the rp2040's internal temperaturesensor](https://github.com/opivankristovi/udoo-key-arduino/tree/main/rp2040/core_temperature_plotter)
+  A simple example of how to get data from the rp2040's internal thermometer and write to serial monitor.
+
+[DHT22_data_plotter](https://github.com/opivankristovi/udoo-key-arduino/tree/main/rp2040/dht22_data_plot)
+  Get the sensor values from a DHT22-sensor connected to GPIOpin 22 and write it to the serial monitor
+
  ## For Udoo Key Pro only
