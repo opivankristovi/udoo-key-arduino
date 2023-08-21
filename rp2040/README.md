@@ -10,6 +10,9 @@ Examples in this folder are for writing to the RP2040 controller.
   A simple example of how to get data from the rp2040's internal thermometer and write to serial monitor.
 
 [DHT22_data_plotter](https://github.com/opivankristovi/udoo-key-arduino/tree/main/rp2040/dht22_data_plot)
-  Get the sensor values from a DHT22-sensor connected to GPIOpin 22 and write it to the serial monitor
+  Get the sensor values from a DHT22-sensor connected to GPIOpin 22 and write it to the serial monitor. 
+
+For more information about the sketches, take a look at the commented sections in the code.
+For a cheatsheet with the pinout and onboard connections etc. can be found here: [Reference](https://github.com/opivankristovi/udoo-key-arduino/blob/main/REFERENCE.md)
 
  ## For Udoo Key Pro only
