@@ -13,7 +13,7 @@ Read more about the Udoo Key:
 * [Kickstarter](https://www.kickstarter.com/projects/udoo/udoo-key-the-4-ai-platform)
 * [Udoo Key Docs](http://www.udoo.org/docs-key/Introduction/Introduction.html)
 
-#Preparation
+## Preparation
 Before you can program the Udoo Key, you need to have installed additional boards in the Arduino IDE for both its mcu's.
 To do this, go to File>>Preferences and under "Additional Board Manager URL's" add the following 2 URL's :
 * https://dl.espressif.com/dl/package_esp32_index.json
