@@ -1,4 +1,4 @@
-const int ledPin =  25; //Green on-boar LED pin
+const int ledPin =  25; //Green on-board LED pin
 
 void setup() {
   //Set led pin as output pin

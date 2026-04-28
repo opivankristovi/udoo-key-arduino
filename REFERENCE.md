@@ -32,7 +32,7 @@
 |Led|Chip|Pin|
 |---|---|---|
 |Green |RP2040|Gpio25|
-|Yellow|ESP32 |Gpio32|
+|Yellow|ESP32 |Gpio33|
 |Blue  |ESP32 |Gpio32|
 
 ## UEXT Pins

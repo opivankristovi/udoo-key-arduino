@@ -1,0 +1,15 @@
+# Arduino IDE build output
+build/
+*.bin
+*.elf
+*.hex
+*.map
+
+# Arduino IDE temp files
+*.bak
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/

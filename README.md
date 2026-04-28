@@ -27,8 +27,23 @@ put them in a [Quick Reference](REFERENCE.md) to save time.
 
 ## [esp32](esp32/README.md)
 
-Programs that are meant to be run on the esp32 are in the [esp32](esp32/) directory.
+Programs that are meant to be run on the ESP32 are in the [esp32](esp32/) directory.
+
+| Sketch | Description |
+|--------|-------------|
+| [BlinkESP32](esp32/BlinkESP32/) | Alternates the blue and yellow on-board LEDs |
+| [WiFiScan](esp32/WiFiScan/) | Scans for nearby Wi-Fi networks (no credentials needed) |
+| [esp32ToPicoUART](esp32/esp32ToPicoUART/) | Sends UART commands to the RP2040 |
+| [Digital_mic_SerialPlotter](esp32/Digital_mic_SerialPlotter/) | Streams I2S microphone samples *(Pro only)* |
+| [MPU6500_Test_esp32](esp32/MPU6500_Test_esp32/) | Reads accelerometer and gyroscope data *(Pro only)* |
 
 ## [rp2040](rp2040/README.md)
 
-Programs that are meant to be run on the rp2040 are in the [rp2040](rp2040/) directory.
+Programs that are meant to be run on the RP2040 are in the [rp2040](rp2040/) directory.
+
+| Sketch | Description |
+|--------|-------------|
+| [BlinkRP2040](rp2040/BlinkRP2040/) | Blinks the green on-board LED |
+| [core_temperature_plotter](rp2040/core_temperature_plotter/) | Reads the RP2040 internal temperature sensor |
+| [dht22_data_plot](rp2040/dht22_data_plot/) | Reads a DHT22 temperature/humidity sensor |
+| [picoToEsp32UART](rp2040/picoToEsp32UART/) | Receives UART commands from the ESP32 |

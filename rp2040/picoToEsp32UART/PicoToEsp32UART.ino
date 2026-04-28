@@ -1,6 +1,6 @@
 const int rxPin = 1;    //UART rx-pin (connected to ESP32 tx-pin)
 const int txPin = 0;    //UART tx-pin (connected to ESP32 rx-pin)
-const int ledPin =  25; //Green on-boar LED pin
+const int ledPin =  25; //Green on-board LED pin
 
 void setup() {
   //Configure the pins for UART1
