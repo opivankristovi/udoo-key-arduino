@@ -51,3 +51,32 @@ See `REFERENCE.md` for the full UEXT and header pinouts.
 - Each sketch lives in its own subdirectory named after the sketch (Arduino IDE requirement)
 - Each sketch directory should include a `README.md` describing purpose, required libraries, board selection, and wiring if applicable
 - Serial baud rate: use **115200** unless a sensor or protocol requires otherwise
+
+## Slash commands
+
+Two project-level Claude Code commands are available in `.claude/commands/`. Invoke them from Claude Code while inside this repo.
+
+### `/new-sketch <esp32|rp2040> <SketchName> [description]`
+
+Scaffolds a new Arduino sketch:
+- Creates `<mcu>/<SketchName>/` with `<SketchName>.ino` and `README.md`
+- `.ino` includes the correct board-specific on-board pin constants and `setup()`/`loop()` stubs
+- Appends a row to the parent `esp32/README.md` or `rp2040/README.md` sketch table
+
+Example:
+```
+/new-sketch rp2040 I2CScanner Scans the I2C bus and prints detected addresses
+/new-sketch esp32 WebServer Serves a simple status page over Wi-Fi
+```
+
+### `/uart-pair <PairName> [description]`
+
+Scaffolds a matched ESP32 + RP2040 UART pair in one shot — unique to this dual-MCU board:
+- Creates `esp32/<PairName>ESP32/` and `rp2040/<PairName>RP2040/` with `.ino` files pre-wired to the on-board UART (ESP32 GPIO19/22 ↔ RP2040 GPIO0/1, 9600 baud)
+- Creates a `README.md` for each side noting they work as a pair
+- Appends rows to both parent READMEs
+
+Example:
+```
+/uart-pair PingPong ESP32 sends a ping every second, RP2040 echoes it back
+```
