@@ -21,6 +21,27 @@
 |---|---|---|
 |Gpio23|Reset pin|Reset rp2040 by setting low then setting high|
 
+## MPU-6500 IMU (Udoo Key Pro only)
+
+The MPU-6500 6-axis IMU (accelerometer + gyroscope) is physically connected to **both** MCUs, but a jumper selects which one may communicate with it over I2C. Pin 1 is closest to the RP2040; pin 3 is closest to the ESP32.
+
+| Jumper position | IMU connected to     |
+|-----------------|----------------------|
+| Not placed      | ESP32 **(default)**  |
+| Pin 1–2         | RP2040               |
+| Pin 2–3         | ESP32                |
+
+### I2C pins when using ESP32
+| ESP32  | Function |
+|--------|----------|
+| Gpio18 | I2C SDA  |
+| Gpio21 | I2C SCL  |
+
+I2C address: **0x69**
+
+### I2C pins when using RP2040
+Verify the specific SDA/SCL GPIOs from the board schematic before use.
+
 ## I2S pins for SPK0838HT4H-1 digital microphone
 |ESP32|Microphone sensor|Function|
 |---|---|---|

@@ -6,7 +6,7 @@ The **Udoo Key** is a dual-MCU development board:
 - **ESP32** — handles Wi-Fi, Bluetooth, I2S microphone (Pro), IMU/MPU6500 (Pro), and on-board UART to RP2040
 - **RP2040** — general GPIO, sensors, and on-board UART to ESP32
 
-The **Udoo Key Pro** adds an on-board SPK0838HT4H-1 I2S digital microphone and an MPU6500 IMU, both wired to the ESP32.
+The **Udoo Key Pro** adds an on-board SPK0838HT4H-1 I2S digital microphone (wired to the ESP32) and an MPU-6500 6-axis IMU. The IMU is physically connected to **both** MCUs; a 3-pin jumper selects which one can talk to it over I2C (default: ESP32 — no jumper placed).
 
 ## Repository structure
 
@@ -40,9 +40,12 @@ Board manager URLs (add under File → Preferences):
 | UART RX ← ESP32    | RP2040 | 0   |
 | I2S microphone data | ESP32 | 25  |
 | I2S microphone CLK  | ESP32 | 27  |
-| IMU I2C SDA        | ESP32  | 18  |
-| IMU I2C SCL        | ESP32  | 21  |
+| IMU I2C SDA (ESP32 side) | ESP32  | 18  |
+| IMU I2C SCL (ESP32 side) | ESP32  | 21  |
+| IMU I2C address          | —      | 0x69 |
 | RP2040 reset       | ESP32  | 23  |
+
+The IMU I2C lines are shared with both MCUs via a jumper — see `REFERENCE.md` for the jumper positions. The RP2040-side I2C pin numbers for the IMU should be verified from the board schematic.
 
 See `REFERENCE.md` for the full UEXT and header pinouts.
 

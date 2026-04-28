@@ -1,8 +1,8 @@
 The sketches in this folder are for writing to the ESP32 controller
 ## For Udoo Key Pro only:
 [esp32/MPU6500_Test](https://github.com/opivankristovi/udoo-key-arduino/tree/main/esp32/MPU6500_Test_esp32)
-  Gives an example of retrieving sensor values from the Kickstarters Udoo Key Pro on-board MPU6500 IMU sensor
-  printing them to the serial monitor
+  Reads accelerometer, gyroscope, and temperature from the on-board MPU-6500 IMU.
+  Requires the IMU jumper to be not placed (default) or set to pin 2–3 so the ESP32 controls the I2C bus.
 
 [read samples from I2S microphone](https://github.com/opivankristovi/udoo-key-arduino/tree/main/esp32/Digital_mic_SerialPlotter)
   Gives a stream of sample values to the monitor, read from the on board I2S microphone sensor

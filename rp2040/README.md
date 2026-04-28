@@ -19,4 +19,8 @@ For a cheatsheet with the pinout and onboard connections etc. can be found here:
 [DHT22_data_plotter](https://github.com/opivankristovi/udoo-key-arduino/tree/main/rp2040/dht22_data_plot)
   Get the sensor values from a DHT22-sensor connected to GPIOpin 22 and write it to the serial monitor. 
 
- ## For Udoo Key Pro only
+## For Udoo Key Pro only
+
+The MPU-6500 IMU can be accessed from the RP2040 by setting the on-board jumper to **pin 1–2** (pin 1 is the pin closest to the RP2040). By default (no jumper) the IMU is connected to the ESP32.
+
+No RP2040 IMU example exists yet — contributions welcome. See [REFERENCE.md](https://github.com/opivankristovi/udoo-key-arduino/blob/main/REFERENCE.md) for the jumper details, and use the `/uart-pair` Claude Code command if you want to scaffold a sketch that reads the IMU on the RP2040 side.
