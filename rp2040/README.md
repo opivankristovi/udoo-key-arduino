@@ -17,7 +17,10 @@ For a cheatsheet with the pinout and onboard connections etc. can be found here:
   A simple example of how to get data from the rp2040's internal thermometer and write to serial monitor.
 
 [DHT22_data_plotter](https://github.com/opivankristovi/udoo-key-arduino/tree/main/rp2040/dht22_data_plot)
-  Get the sensor values from a DHT22-sensor connected to GPIOpin 22 and write it to the serial monitor. 
+  Get the sensor values from a DHT22-sensor connected to GPIOpin 22 and write it to the serial monitor.
+
+[SmartHomeRP2040](https://github.com/opivankristovi/udoo-key-arduino/tree/main/rp2040/SmartHomeRP2040)
+  Reads a DHT22 temperature/humidity sensor and transmits readings to the ESP32 over the on-board UART every 10 seconds. Must be used together with esp32/SmartHomeESP32/.
 
 ## For Udoo Key Pro only
 

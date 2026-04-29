@@ -61,6 +61,7 @@ Programs that are meant to be run on the ESP32 are in the [esp32](esp32/) direct
 | [esp32ToPicoUART](esp32/esp32ToPicoUART/) | Sends UART commands to the RP2040 |
 | [Digital_mic_SerialPlotter](esp32/Digital_mic_SerialPlotter/) | Streams I2S microphone samples *(Pro only)* |
 | [MPU6500_Test_esp32](esp32/MPU6500_Test_esp32/) | Reads accelerometer and gyroscope data *(Pro only)* |
+| [SmartHomeESP32](esp32/SmartHomeESP32/) | Wi-Fi + MQTT hub: UART sensor receiver + I2S audio event detection *(Pro only for audio)* |
 
 ## [rp2040](rp2040/README.md)
 
@@ -72,3 +73,4 @@ Programs that are meant to be run on the RP2040 are in the [rp2040](rp2040/) dir
 | [core_temperature_plotter](rp2040/core_temperature_plotter/) | Reads the RP2040 internal temperature sensor |
 | [dht22_data_plot](rp2040/dht22_data_plot/) | Reads a DHT22 temperature/humidity sensor |
 | [picoToEsp32UART](rp2040/picoToEsp32UART/) | Receives UART commands from the ESP32 |
+| [SmartHomeRP2040](rp2040/SmartHomeRP2040/) | Reads DHT22 and transmits sensor data to ESP32 over UART |

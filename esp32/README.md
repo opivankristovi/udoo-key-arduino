@@ -17,3 +17,6 @@ The sketches in this folder are for writing to the ESP32 controller
 [Serial UART >> RP2040](https://github.com/opivankristovi/udoo-key-arduino/tree/main/esp32/esp32ToPicoUART)
   Should be used together with the RP2040 UART code to work.
   Simultaneously with blinking its onboard LED, it sends a command through the onboard UART0 bus to the RP2040 which in turn uses this command to blink its own LED in sync.
+
+[SmartHomeESP32](https://github.com/opivankristovi/udoo-key-arduino/tree/main/esp32/SmartHomeESP32)
+  Wi-Fi + MQTT hub: receives DHT22 sensor data from the RP2040 over UART and publishes to MQTT topics on a local broker. Also detects sound events via the on-board I2S microphone (Pro only) and publishes them to MQTT. Must be used together with rp2040/SmartHomeRP2040/.
