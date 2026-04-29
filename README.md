@@ -25,6 +25,31 @@ For compiling or programming the RP2040, select the Raspberry Pi Pico Module, an
 I've collected some pinouts etc from the Udoo Key documentation and 
 put them in a [Quick Reference](REFERENCE.md) to save time.
 
+## Using this repo with Claude Code
+
+This repository includes [Claude Code](https://claude.ai/code) integration. If you open it in Claude Code, the `CLAUDE.md` file gives Claude full context about the board — pin assignments, board selection, jumper positions, and coding conventions — so you can ask questions or request code without explaining the hardware first.
+
+Two slash commands are available to scaffold new sketches quickly:
+
+### `/new-sketch <esp32|rp2040> <SketchName> [description]`
+
+Creates a new sketch directory with a ready-to-compile `.ino` (correct board-specific pin constants, `setup()`/`loop()` stubs) and a `README.md`, and adds it to the relevant index.
+
+```
+/new-sketch rp2040 I2CScanner Scans the I2C bus and prints detected addresses
+/new-sketch esp32 WebServer Serves a simple status page over Wi-Fi
+```
+
+### `/uart-pair <PairName> [description]`
+
+Scaffolds a matched ESP32 + RP2040 UART pair in one go — both `.ino` files pre-wired to the on-board UART bus, with READMEs that reference each other.
+
+```
+/uart-pair PingPong ESP32 sends a ping every second, RP2040 echoes it back
+```
+
+---
+
 ## [esp32](esp32/README.md)
 
 Programs that are meant to be run on the ESP32 are in the [esp32](esp32/) directory.
