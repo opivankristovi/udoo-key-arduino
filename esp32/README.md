@@ -20,3 +20,6 @@ The sketches in this folder are for writing to the ESP32 controller
 
 [SmartHomeESP32](https://github.com/opivankristovi/udoo-key-arduino/tree/main/esp32/SmartHomeESP32)
   Wi-Fi + MQTT hub: receives DHT22 sensor data from the RP2040 over UART and publishes to MQTT topics on a local broker. Also detects sound events via the on-board I2S microphone (Pro only) and publishes them to MQTT. Must be used together with rp2040/SmartHomeRP2040/.
+
+[RepeaterNodeESP32](https://github.com/opivankristovi/udoo-key-arduino/tree/main/esp32/RepeaterNodeESP32)
+  Wi-Fi NAT repeater (AP+STA) + MQTT hub. Receives JSON sensor packets from the RP2040 over UART and publishes each reading to MQTT. Subscribes to output command topics and forwards commands to the RP2040. Must be used together with rp2040/RepeaterNodeRP2040/.

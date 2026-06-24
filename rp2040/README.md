@@ -22,6 +22,9 @@ For a cheatsheet with the pinout and onboard connections etc. can be found here:
 [SmartHomeRP2040](https://github.com/opivankristovi/udoo-key-arduino/tree/main/rp2040/SmartHomeRP2040)
   Reads a DHT22 temperature/humidity sensor and transmits readings to the ESP32 over the on-board UART every 10 seconds. Must be used together with esp32/SmartHomeESP32/.
 
+[RepeaterNodeRP2040](https://github.com/opivankristovi/udoo-key-arduino/tree/main/rp2040/RepeaterNodeRP2040)
+  Reads two I2C sensors (BME280/BMP280/BMP180, selectable), a probe (DS18B20/DHT11/DHT22), two analog inputs and two digital inputs. Drives four digital/PWM output pins. Sends all sensor data to the ESP32 over UART; receives and applies output commands. Must be used together with esp32/RepeaterNodeESP32/.
+
 ## For Udoo Key Pro only
 
 The MPU-6500 IMU can be accessed from the RP2040 by setting the on-board jumper to **pin 1–2** (pin 1 is the pin closest to the RP2040). By default (no jumper) the IMU is connected to the ESP32.
