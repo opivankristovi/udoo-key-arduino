@@ -1,6 +1,6 @@
 # RepeaterNodeESP32
 
-WiFi NAT repeater + MQTT hub — the ESP32 half of the Udoo Key Repeater Node pair.
+WiFi NAT repeater + MQTT hub + captive-portal web page — the ESP32 half of the Udoo Key Repeater Node pair.
 
 Must be used together with **[rp2040/RepeaterNodeRP2040](../../rp2040/RepeaterNodeRP2040/)**.
 
@@ -11,6 +11,9 @@ Must be used together with **[rp2040/RepeaterNodeRP2040](../../rp2040/RepeaterNo
 - Receives JSON sensor packets from the RP2040 over the on-board UART bridge
 - Publishes each sensor value to MQTT
 - Subscribes to output command topics and forwards commands to the RP2040
+- **Captive-portal web page** for runtime configuration — no re-flashing needed
+- **Home Assistant auto-discovery** — publishes retained MQTT config topics on connect
+- **NTP time sync** + **per-output clock schedules** (turn output on/off at configured times)
 
 ## Board & toolchain
 
@@ -22,18 +25,28 @@ Must be used together with **[rp2040/RepeaterNodeRP2040](../../rp2040/RepeaterNo
 
 PubSubClient · **ArduinoJson v7** (v6 will not compile — uses `JsonDocument`)
 
+`WebServer`, `DNSServer`, `Preferences` ship with the ESP32 Arduino core — no extra install needed.
+
 ## Configuration
 
-Edit **`config.h`** before flashing:
+**Flash first, configure via web portal** — no need to edit `config.h`.
 
-| Define | Purpose |
-|--------|---------|
-| `WIFI_STA_SSID` / `WIFI_STA_PASS` | Upstream network to extend |
-| `WIFI_AP_SSID` / `WIFI_AP_PASS` | Name and password for the new AP (min 8 chars) |
-| `MQTT_HOST` / `MQTT_PORT` | Broker address |
-| `MQTT_USER` / `MQTT_PASS` | Broker credentials (leave blank if none) |
-| `MQTT_CLIENT` | Client ID — must be unique per device on your broker |
-| `TOPIC_BASE` | MQTT topic prefix (default `udookey`) |
+1. Flash `RepeaterNodeESP32.ino` (board: ESP32 Dev Module).
+2. Join Wi-Fi **UdooKey-AP** / **repeater1**.
+3. Browse to **http://192.168.4.1** — the captive portal opens automatically.
+4. Set your upstream Wi-Fi credentials, MQTT broker, NTP server, timezone, and optional clock schedules.
+5. Save — the device reboots and connects.
+
+Settings are stored in NVS (flash). `config.h` only provides first-boot defaults used before you save from the portal.
+
+### Web portal tabs
+
+| Tab | What you configure |
+|-----|--------------------|
+| Network | STA (upstream) SSID/password, AP SSID/password |
+| MQTT | Broker host, port, credentials, client ID, topic base, HA discovery |
+| System | NTP server, POSIX timezone string |
+| Schedules | Per-output on/off times and ON level (0-255) |
 
 ## UART protocol
 
