@@ -198,8 +198,8 @@ static const char PAGE_HEAD[] PROGMEM =
 
 static const char PAGE_FOOT[] PROGMEM = "</div></body></html>";
 
-static String H() { return FPSTR(PAGE_HEAD); }
-static String F() { return FPSTR(PAGE_FOOT); }
+static String pageHead() { return FPSTR(PAGE_HEAD); }
+static String pageFoot() { return FPSTR(PAGE_FOOT); }
 
 static String fld(const char* id, const char* label, const char* val,
                    const char* type = "text") {
@@ -225,17 +225,17 @@ static String cb(const char* id, const char* label, bool checked) {
 }
 
 static void rebootPage(const char* msg) {
-    String h = H();
+    String h = pageHead();
     h += "<h3>Saving\xe2\x80\xa6</h3><p>"; h += msg;
     h += "</p><p>Rebooting \xe2\x80\x94 <a href='/'>refresh</a> in ~5 s.</p>";
-    h += F();
+    h += pageFoot();
     server.send(200, "text/html", h);
     delay(800);
     ESP.restart();
 }
 
 static void handleRoot() {
-    String h = H();
+    String h = pageHead();
     h += "<h3>Status</h3><table>";
     h += "<tr><th>AP</th><td>"; h += apSsid;
     h += " &nbsp; "; h += WiFi.softAPIP().toString(); h += "</td></tr>";
@@ -266,14 +266,14 @@ static void handleRoot() {
          "<button class='btn btn-g' "
          "onclick=\"return confirm('Clear all settings and reboot?')\">"
          "Factory Reset</button></form>";
-    h += F();
+    h += pageFoot();
     server.send(200, "text/html", h);
 }
 
 static void handleReset() {
     server.send(200, "text/html",
-                H() + "<h3>Resetting\xe2\x80\xa6</h3>"
-                "<p>All settings cleared. Rebooting.</p>" + F());
+                pageHead() + "<h3>Resetting\xe2\x80\xa6</h3>"
+                "<p>All settings cleared. Rebooting.</p>" + pageFoot());
     delay(400);
     Preferences p;
     p.begin("repeater", false); p.clear(); p.end();
@@ -282,7 +282,7 @@ static void handleReset() {
 }
 
 static void handleNetwork() {
-    String h = H();
+    String h = pageHead();
     h += "<h3>Network</h3><form method='post' action='/save/network'>";
     h += "<h4>Upstream Wi-Fi (STA)</h4>";
     h += fld("ss", "SSID", staSsid);
@@ -291,7 +291,7 @@ static void handleNetwork() {
     h += fld("as", "AP SSID", apSsid);
     h += fld("ap", "AP Password (min 8 chars)", apPass, "password");
     h += "<br><button class='btn'>Save &amp; Reboot</button></form>";
-    h += F(); server.send(200, "text/html", h);
+    h += pageFoot(); server.send(200, "text/html", h);
 }
 
 static void handleSaveNetwork() {
@@ -299,8 +299,8 @@ static void handleSaveNetwork() {
     String as_ = server.arg("as"), ap_ = server.arg("ap");
     if (!ss.length() || !as_.length() || ap_.length() < 8) {
         server.send(400, "text/html",
-            H() + "<p class='err'>Invalid input. AP password must be &ge;8 chars.</p>"
-            "<a href='/network'>Back</a>" + F());
+            pageHead() + "<p class='err'>Invalid input. AP password must be &ge;8 chars.</p>"
+            "<a href='/network'>Back</a>" + pageFoot());
         return;
     }
     strlcpy(staSsid, ss.c_str(),  sizeof(staSsid));
@@ -312,7 +312,7 @@ static void handleSaveNetwork() {
 }
 
 static void handleMqtt() {
-    String h = H();
+    String h = pageHead();
     h += "<h3>MQTT</h3><form method='post' action='/save/mqtt'>";
     h += "<div class='row'>";
     h += fld("mh", "Broker host", cfg.mqttHost);
@@ -326,7 +326,7 @@ static void handleMqtt() {
     h += cb("ha", "Enable HA auto-discovery", cfg.haEnabled);
     h += fld("hap", "Discovery prefix", cfg.haPrefix);
     h += "<br><button class='btn'>Save &amp; Reboot</button></form>";
-    h += F(); server.send(200, "text/html", h);
+    h += pageFoot(); server.send(200, "text/html", h);
 }
 
 static void handleSaveMqtt() {
@@ -344,7 +344,7 @@ static void handleSaveMqtt() {
 }
 
 static void handleSystem() {
-    String h = H();
+    String h = pageHead();
     h += "<h3>System / NTP</h3><form method='post' action='/save/system'>";
     h += fld("ntp", "NTP server", cfg.ntpServer);
     h += "<label>Timezone (POSIX string)"
@@ -355,7 +355,7 @@ static void handleSystem() {
          "<input type='text' name='tz' value='";
     h += cfg.timezone; h += "'></label>";
     h += "<br><button class='btn'>Save &amp; Reboot</button></form>";
-    h += F(); server.send(200, "text/html", h);
+    h += pageFoot(); server.send(200, "text/html", h);
 }
 
 static void handleSaveSystem() {
@@ -366,7 +366,7 @@ static void handleSaveSystem() {
 }
 
 static void handleSchedules() {
-    String h = H();
+    String h = pageHead();
     h += "<h3>Clock Schedules</h3>"
          "<p><small>NTP must be synced. Each output turns ON at the on-time "
          "and OFF at the off-time, every day.</small></p>"
@@ -386,7 +386,7 @@ static void handleSchedules() {
         h += "</div>";
     }
     h += "<br><button class='btn'>Save &amp; Reboot</button></form>";
-    h += F(); server.send(200, "text/html", h);
+    h += pageFoot(); server.send(200, "text/html", h);
 }
 
 static void handleSaveSchedules() {
@@ -430,7 +430,7 @@ static void portalSetup() {
 static void startNtp();   // forward declaration
 
 static void enableNapt() {
-    ip_napt_enable(WiFi.softAPIP().addr, 1);
+    ip_napt_enable((uint32_t)WiFi.softAPIP(), 1);
     Serial.println("[NAPT] enabled");
 }
 
